@@ -12,7 +12,7 @@ import (
 	"golang.org/x/oauth2/google"
 	//"code.google.com/p/goauth2/oauth"
 	//"code.google.com/p/goauth2/oauth/jwt"
-	bigquery "github.com/eranchetz/google-api-go-client-bigquery/bigquery/v2"
+	bigquery "google.golang.org/api/bigquery/v2"
 )
 
 const authURL = "https://accounts.google.com/o/oauth2/auth"
