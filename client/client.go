@@ -3,15 +3,13 @@ package client
 import (
 	"errors"
 	"fmt"
-
 	"io/ioutil"
+	"log"
 	"strconv"
 	"time"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
-	//"code.google.com/p/goauth2/oauth"
-	//"code.google.com/p/goauth2/oauth/jwt"
 	bigquery "google.golang.org/api/bigquery/v2"
 )
 
@@ -143,7 +141,8 @@ func (c *Client) InsertRow(projectID, datasetID, tableID string, rowData map[str
 
 // AsyncQuery loads the data by paging through the query results and sends back payloads over the dataChan - dataChan sends a payload containing Data objects made up of the headers, rows and an error attribute
 func (c *Client) AsyncQuery(pageSize int, dataset, project, queryStr string, dataChan chan Data) {
-	c.pagedQuery(pageSize, dataset, project, queryStr, dataChan)
+	_, _, err := c.pagedQuery(pageSize, dataset, project, queryStr, dataChan)
+	log.Printf("%v", err)
 }
 
 // Query loads the data for the query paging if necessary and return the data rows, headers and error
