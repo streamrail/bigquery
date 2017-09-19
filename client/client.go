@@ -142,7 +142,7 @@ func (c *Client) InsertRow(projectID, datasetID, tableID string, rowData map[str
 // AsyncQuery loads the data by paging through the query results and sends back payloads over the dataChan - dataChan sends a payload containing Data objects made up of the headers, rows and an error attribute
 func (c *Client) AsyncQuery(pageSize int, dataset, project, queryStr string, dataChan chan Data) {
 	_, _, err := c.pagedQuery(pageSize, dataset, project, queryStr, dataChan)
-	log.Printf("%v", err)
+	log.Printf("++++ Error: %v", err)
 }
 
 // Query loads the data for the query paging if necessary and return the data rows, headers and error
